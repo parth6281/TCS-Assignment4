@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "updated name",
+        "age": 22,
+        "gender": "Male",
+        "email": "userone@gmail.com"
+    },
+    {
+        "id": 2,
+        "name": "user two",
+        "age": 24,
+        "gender": "Female",
+        "email": "usertwo@gmail.com"
+    },
+    {
+        "id": 3,
+        "name": "user three",
+        "age": 23,
+        "gender": "Male",
+        "email": "userthree@gmail.com"
+    }
+]

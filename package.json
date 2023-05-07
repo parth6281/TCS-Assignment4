@@ -1,0 +1,19 @@
+{
+  "name": "assignment-4",
+  "version": "1.0.0",
+  "description": "Creating API routes to send and retrieve data",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest",
+    "dev": "nodemon app.js"
+  },
+  "author": "Parth Prajapati",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
