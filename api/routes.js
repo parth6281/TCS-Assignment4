@@ -4,10 +4,10 @@ const util = require('util');
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
-const isValidName = (name) => name.match(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/);
+const isValidName = (name) => (name = name.toString()) && name.match(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/);
 const isValidAge = (age) => (age = parseInt(age)) && age !== NaN && age > 0 && age < 100
-const isValidGender = (gender) => (gender.toUpperCase() === "MALE" || gender.toUpperCase() === "FEMALE");
-const isValidEmail = (email) => email.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/);
+const isValidGender = (gender) => (gender = gender.toString()) && (gender.toUpperCase() === "MALE" || gender.toUpperCase() === "FEMALE");
+const isValidEmail = (email) => (email = email.toString()) && email.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/);
 
 const addProfile = async (req, res) => {
     let { id, name, age, gender, email } = req.body;
@@ -145,14 +145,12 @@ const editProfile = async (req, res) => {
     } else if (gender) matched.gender = gender;
 
     if (email && !isValidEmail(email)) {
-        if (!isValidEmail(email)) {
-            res.status(400).json({
-                message: "Email information is invalid."
-            });
-            return;
-        } else if (email) matched.email = email;
+        res.status(400).json({
+            message: "Email information is invalid."
+        });
+        return;
+    } else if (email) matched.email = email;
 
-    }
     data[data.indexOf(matched)] = matched;
 
     try {
